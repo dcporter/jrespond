@@ -5,22 +5,25 @@ jRespond: Responsive JS & CSS
 
 Available [on GitHub](https://github.com/dcporter/jrespond).
 
-jRespond is a jQuery plugin for implementing the JavaScript side of responsive, or for mimicking CSS
-media queries on platforms that don't support them.
+jRespond is a jQuery plugin for implementing the JavaScript side of responsive design, or for mimicking
+CSS media queries on platforms that don't support them.
 
 You can use jRespond to respond to changes in height, width, or aspect ratio (width / height). Using it
 is as simple as specifying the thresholds you care about, the name of each state, and the javascript
 callback (or CSS selector). It looks like this:
 
 ```
+// Define your callback.
 function windowWidthDidChange(namespace, currentState, priorState) {
   console.log(namespace + ' moved from "' + priorState + '" to "' + currentState + '".');
 }
-var states = ['narrow', 'medium', 'wide', 'x-wide'];
-var thresholds = [350, 500, 800, 1000];
+// Define the thresholds.
+var states =     ['narrow', 'medium', 'wide', 'x-wide'];
+var thresholds = [        350,      500,    800       ];
+// Begin responding.
 $.respondToWidths('my-width-namespace', states, thresholds, windowWidthDidChange);
 
-// On resizing from 499 to 500 pixels:
+// On resizing from 499 to 500 pixels wide:
 > my-width-namespace moved from medium to wide.
 ```
 
